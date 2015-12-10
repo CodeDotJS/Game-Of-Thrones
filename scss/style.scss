@@ -1,0 +1,81 @@
+@import "compass/css3";
+
+// Variables
+$slideLeft: -150px 0px;
+$slideUp: 0px -75px;
+// You know nothing, Jon Snow
+@each $char, $move, $text, $url in
+  (hodor, $slideLeft, left, 'http://i.imgur.com/X8cdO36.jpg'),
+  (snow, $slideLeft, right, 'http://i.imgur.com/4oqN33S.jpg'),
+  (khaleesi, $slideLeft, right, 'http://i.imgur.com/ULmhJHw.jpg'),
+  (tyrion, $slideUp, left, 'http://i.imgur.com/vMoNt1E.jpg') {
+  ##{$char} {
+    background: url($url) no-repeat;
+    background-size: cover;
+    &:hover {
+      background-position: $move;
+    }
+    .caption {
+      text-align: $text;
+      padding-#{$text}: 20px;
+    }
+  }
+}
+html {
+  height: 100%;
+  font-family: 'Cinzel', serif;
+  background: url('http://i.imgur.com/O91rlmj.jpg') top center no-repeat,
+    radial-gradient(transparent, rgba(0,0,0,.4));
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 65em;
+  margin: 20px auto;
+}
+.card {
+  display: inline-block;
+  position: relative;
+  width: 240px;
+  height: 270px;
+  border-radius: 2px;
+  margin: 20px 10px;
+  overflow: hidden;
+  opacity: .75;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  transition: all ease .8s;
+  &:hover {
+    opacity: 1;
+  }
+  .caption {
+    height: 70px;
+    font-size: 24px;
+    line-height: 70px;
+    background: linear-gradient(transparent, rgba(0,0,0,1));
+    color: rgba(255, 255, 255, 1);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    opacity: 0;
+    transition: all ease .8s;
+  }
+  &:hover .caption {
+    bottom: 0px;
+    opacity: 1;
+  }
+}
+// Font stuff
+@import url(http://fonts.googleapis.com/css?family=Cinzel);
+h1 {
+  font-size: 36px;
+  font-weight: 400;
+  letter-spacing: .15rem;
+  text-align: center;
+  margin-bottom: 0px;
+  color: rgba(255, 255, 255, .8);
+}
